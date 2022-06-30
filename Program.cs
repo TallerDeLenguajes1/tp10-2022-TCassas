@@ -21,8 +21,12 @@ namespace tp10_2022_TCassas {
                             var civilizationsList = JsonSerializer.Deserialize<CivilizationsList>(responseBody);
 
                             foreach(Civilization civilization in civilizationsList.Civilizations) {
-                                Console.WriteLine(civilization.Id);
+                                Console.WriteLine(civilization.Id + "- " + civilization.Name);
                             }
+
+                            string civilizationSerialized = JsonSerializer.Serialize(civilizationsList);
+
+                            File.WriteAllText(@".\civilizations.json", civilizationSerialized);
                         }
                     }
                 }
